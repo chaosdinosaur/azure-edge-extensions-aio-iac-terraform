@@ -2,12 +2,6 @@
 
 set -e
 
-install_prerequisites() {
-    pushd ./provisioning
-    ./00-install-prerequistes.sh
-    popd
-}
-
 navigate_to_script_dir() {
     local script_dir=$(dirname "$0")
     cd $script_dir
@@ -62,7 +56,6 @@ deploy_aio_resources() {
 
 suffix=$(date +%s | cut -c6-10)
 START_TIME=$(date +%s)
-install_prerequisites
 navigate_to_script_dir
 create_service_principal $suffix
 connect_to_arc $suffix
