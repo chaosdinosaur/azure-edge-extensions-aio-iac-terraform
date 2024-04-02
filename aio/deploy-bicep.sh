@@ -28,6 +28,7 @@ connect_to_arc() {
     export RESOURCE_GROUP="aio$suffix"
     export CLUSTER_NAME="aio$suffix"
     export LOCATION="westus2"
+    export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
     ./01-arc-connect.sh
     popd
 }
