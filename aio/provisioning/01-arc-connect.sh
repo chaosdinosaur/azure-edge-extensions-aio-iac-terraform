@@ -14,6 +14,10 @@ if [ -z "$LOCATION" ]; then
     echo "LOCATION is not set"
     exit 1
 fi
+if [ -z "$SUBSCRIPTION_ID" ]; then
+    echo "SUBSCRIPTION_ID is not set"
+    exit 1
+fi
 
 if [ -z "$ARC_CUSTOMLOCATION_OID" ]; then
     echo "ARC_CUSTOMLOCATION_OID is not set. Setting it to the value of LOCATION $LOCATION."
