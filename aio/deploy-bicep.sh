@@ -25,7 +25,7 @@ create_service_principal() {
 connect_to_arc() {
     pushd ./provisioning
     local suffix="$1"
-    export RESOURCE_GROUP="aio$suffix"
+    export RESOURCE_GROUP="rg-aio-$suffix"
     export CLUSTER_NAME="aio$suffix"
     export LOCATION="westus2"
     export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
