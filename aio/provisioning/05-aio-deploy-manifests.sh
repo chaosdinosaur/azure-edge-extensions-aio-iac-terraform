@@ -11,7 +11,7 @@ fi
 # This timeout is for waiting for the resources mq and data processor to be ready.
 TIMEOUT=${1:-1200}
 
-kubectl config set-context --current --namespace=azure-iot-operations
+sudo kubectl config set-context --current --namespace=azure-iot-operations
 
 # Deploy MQ Broker, Listener and Diagnostics
 kubectl apply -f ./deploy/cert-issuer.yaml

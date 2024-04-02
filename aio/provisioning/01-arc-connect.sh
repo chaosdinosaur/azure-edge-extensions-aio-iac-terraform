@@ -30,7 +30,7 @@ az provider register -n "Microsoft.DeviceRegistry"
 
 az group create --name $RESOURCE_GROUP --location $LOCATION
 
-kubectl get nodes
+sudo kubectl get nodes
 
 # try connecting to Arc, if it fails, continue with debug code
 set +e

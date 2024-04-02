@@ -49,6 +49,6 @@ az iot ops init --cluster $CLUSTER_NAME -g $RESOURCE_GROUP --kv-id $keyVaultReso
     --no-deploy
 
 echo "Check if AKV extension is installed"
-kubectl get pods -n kube-system
+sudo kubectl get pods -n kube-system
 
 echo "Finished deploying AIO Core components"

@@ -29,7 +29,7 @@ templateName="main.bicep"
 echo "Deployment Name: $deploymentName"
 
 echo "Check if AKV extension is installed"
-kubectl get pods -n kube-system
+sudo kubectl get pods -n kube-system
 
 # Deploy bicep for AIO orchestrator, MQ, DP, DeviceRegistry(?) - focus on Arc Extensions in Bicep
 az deployment group create \
