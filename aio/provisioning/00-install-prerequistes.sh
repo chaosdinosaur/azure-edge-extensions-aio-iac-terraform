@@ -4,6 +4,22 @@ set -e
 
 echo "Installing Prerequites..."
 
+# Install JQ
+if ! command -v jq >/dev/null 2>&1; then
+    echo "JQ not found, installing"
+    sudo apt install jq
+else
+    echo "JQ already installed"
+fi
+
+# Install Curl
+if ! command -v curl >/dev/null 2>&1; then
+    echo "Curl not found, installing"
+    sudo apt install curl
+else
+    echo "Curl already installed"
+fi
+
 # Install K3S
 if ! command -v k3s >/dev/null 2>&1; then
     echo "K3S not found, installing"
