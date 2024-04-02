@@ -37,7 +37,8 @@ set +e
 
 az connectedk8s connect --name $CLUSTER_NAME \
 --resource-group $RESOURCE_GROUP \
---location $LOCATION
+--location $LOCATION \
+--subscription $SUBSCRIPTION_ID
 
 status=$?
 
