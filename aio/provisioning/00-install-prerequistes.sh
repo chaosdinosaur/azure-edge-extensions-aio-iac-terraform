@@ -25,26 +25,26 @@ if ! command -v k3s >/dev/null 2>&1; then
     echo "K3S not found, installing"
     curl -sfL https://get.k3s.io | sh -
     curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+
+    mkdir ~/.kube
+    sudo KUBECONFIG=~/.kube/config:/etc/rancher/k3s/k3s.yaml kubectl config view --flatten > ~/.kube/merged
+    mv ~/.kube/merged ~/.kube/config
+    chmod  0600 ~/.kube/config
+    export KUBECONFIG=~/.kube/config
+    #switch to k3s context
+    kubectl config use-context default
+    
+    echo fs.inotify.max_user_instances=8192 | sudo tee -a /etc/sysctl.conf
+    echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+    
+    sudo sysctl -p
+    
+    echo fs.file-max = 100000 | sudo tee -a /etc/sysctl.conf
+    
+    sudo sysctl -p
 else
     echo "K3S already installed"
 fi
-
-mkdir ~/.kube
-sudo KUBECONFIG=~/.kube/config:/etc/rancher/k3s/k3s.yaml kubectl config view --flatten > ~/.kube/merged
-mv ~/.kube/merged ~/.kube/config
-chmod  0600 ~/.kube/config
-export KUBECONFIG=~/.kube/config
-#switch to k3s context
-kubectl config use-context default
-
-echo fs.inotify.max_user_instances=8192 | sudo tee -a /etc/sysctl.conf
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-
-sudo sysctl -p
-
-echo fs.file-max = 100000 | sudo tee -a /etc/sysctl.conf
-
-sudo sysctl -p
 
 # Install Azure CLI
 if ! command -v az >/dev/null 2>&1; then
