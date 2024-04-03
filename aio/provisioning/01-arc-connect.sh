@@ -39,6 +39,11 @@ sudo kubectl get nodes
 # try connecting to Arc, if it fails, continue with debug code
 set +e
 
+echo $RESOURCE_GROUP
+echo $CLUSTER_NAME
+echo $LOCATION
+echo $SUBSCRIPTION_ID
+
 az connectedk8s connect --name $CLUSTER_NAME \
 --resource-group $RESOURCE_GROUP \
 --location $LOCATION \
