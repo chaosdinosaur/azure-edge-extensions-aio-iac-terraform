@@ -29,6 +29,7 @@ connect_to_arc() {
     export CLUSTER_NAME="aio$suffix"
     export LOCATION="westus2"
     export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+    export KUBECONFIG="/etc/rancher/k3s/k3s.yaml"
     ./01-arc-connect.sh
     popd
 }
